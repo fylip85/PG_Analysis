@@ -1,0 +1,31 @@
+in base:
+mkdir /home/ubuntu/neurophys
+mkdir /home/ubuntu/neurophys-phil-transfer
+
+go to env:
+conda activate my_env
+sudo mount -t cifs -o "username=pbethg,domain=d.uzh.ch" //130.60.192.39/neurophysiology$ /home/ubuntu/neurophys
+
+sudo mount -t cifs -o "username=pbethg,domain=d.uzh.ch" //130.60.192.39/Neurophysiology$/transfer/Philipp /home/ubuntu/neurophys-phil-transfer
+
+
+
+or:
+
+ Mount network drive
+First make directory: mkdir ~/neurophys (this folder name is up to your choice)
+Then install cifs-utils:
+sudo apt-get update
+sudo apt install cifs-utils
+
+Then mount:
+
+    sudo mount -t cifs //130.60.192.40/Neurophysiology-Storage-03$/Han /home/ubuntu/neurophys -o credentials=/home/ubuntu/.smbcredentials,domain=UZH,uid=ubuntu,gid=ubuntu
+    for this you need to make a file ~/.smbcredentials, which should have the following format:
+
+        user=pbethg
+        password=pass
+
+.
+
+you can modify ~/.bash_profile and add the above line, so that every time it runs automatically on startup
